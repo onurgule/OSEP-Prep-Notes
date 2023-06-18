@@ -40,3 +40,26 @@ run post/windows/manage/migrate
 > You should try this too.
 ```
 
+# Post Exploitation - Find Readable and Writable Folders
+This program is blocked by group policy. For more information, contact your system administrator.
+```
+accesschk.exe "PWNED_USERNAME" C:\Windows -wus
+> Find a RW folder and use the folder for AppLocker Bypass.
+
+or in "powershell -ep bypass"
+Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+```
+
+# Post Exploitation - Find Executable in Folders:
+```
+icacls C:\Windows\Tasks
+> Find a folder that you have the RX permission.
+```
+
+# Bloodhound - Init
+```
+neo4j console
+> Open bloodhound app in Kali after the neo4j started.
+>localhost:7474 neo4j:neo4j
+
+```
