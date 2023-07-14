@@ -33,6 +33,9 @@ run
 ps
 > find a suitable process (like notepad.exe etc.)
 
+execute -H -f notepad
+> or execute any process.
+
 migrate PID_OF_PROCESS
 > the migration is success.
 
