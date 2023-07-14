@@ -41,6 +41,9 @@ migrate PID_OF_PROCESS
 
 run post/windows/manage/migrate
 > You should try this too.
+
+getpid
+> check current pid
 ```
 
 # Post Exploitation - Find Readable and Writable Folders
